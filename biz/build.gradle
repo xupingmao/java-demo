@@ -1,0 +1,12 @@
+dependencies {
+    compile project(":client")
+    // This dependency is found on compile classpath of this component and consumers.
+//    compile 'com.google.guava:guava:20.0'
+    compile 'org.eclipse.persistence:eclipselink:2.6.3'
+    compile 'mysql:mysql-connector-java:5.1.39'
+    compile 'joda-time:joda-time:2.5'
+    compile 'com.alibaba:fastjson:1.2.16'
+
+    // Use JUnit test framework
+    testCompile 'junit:junit:4.12'
+}

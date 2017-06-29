@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings
+        xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_1.xsd"
+        xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+    <entity class="com.xpm.jpa.entity.Person"/>
+    <entity class="com.xpm.jpa.entity.Doctor"/>
+    <entity class="com.xpm.jpa.entity.PersonCannotLongerThan31"/>
+    <entity class="com.xpm.jpa.entity.Clas"/>
+    <entity class="com.xpm.jpa.entity.Teacher"/>
+    <entity class="com.xpm.jpa.entity.OneToManyOne"/>
+    <entity class="com.xpm.jpa.entity.OneToManyMany"/>
+    <entity class="com.xpm.jpa.entity.Address"/>
+    <entity class="com.xpm.jpa.entity.Order"/>
+</entity-mappings>
