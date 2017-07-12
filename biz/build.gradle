@@ -6,6 +6,9 @@ dependencies {
     compile 'mysql:mysql-connector-java:5.1.39'
     compile 'joda-time:joda-time:2.5'
     compile 'com.alibaba:fastjson:1.2.16'
+    compile "javax.servlet:javax.servlet-api:3.1.0"
+    compile 'org.springframework:spring-context:4.3.1.RELEASE'
+    compile "org.springframework:spring-web:4.3.1.RELEASE"
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
