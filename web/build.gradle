@@ -1,3 +1,8 @@
+apply plugin: 'war'
+apply plugin: "jetty"
+webAppDirName = "src/main/webapp"
+version=
+
 dependencies {
     compile project(":biz")
     // This dependency is found on compile classpath of this component and consumers.
