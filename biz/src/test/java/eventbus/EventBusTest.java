@@ -1,9 +1,14 @@
 package eventbus;
 
+import com.google.common.eventbus.AllowConcurrentEvents;
+import com.google.common.eventbus.AsyncEventBus;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
+import com.google.common.util.concurrent.MoreExecutors;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.concurrent.Executors;
 
 /**
  * Created by xupingmao on 2017/7/10.
@@ -11,9 +16,17 @@ import org.junit.Test;
 public class EventBusTest {
 
     static EventBus eventBus = new EventBus();
+    static EventBus asyncEventBus = new AsyncEventBus(Executors.newFixedThreadPool(10));
+
+
+    static void log(String fmt, Object...args) {
+        fmt = "[" + Thread.currentThread().getName() + "]" + fmt + "\n";
+        System.out.printf(fmt, args);
+    }
 
     static class IntegerListener {
         @Subscribe
+        @AllowConcurrentEvents
         public void handleEvent(Integer event) {
             System.out.println(Thread.currentThread().getName() + ":"
                     + this.getClass().getSimpleName() + " " + event.toString());
@@ -30,9 +43,9 @@ public class EventBusTest {
 
     static class StringListener {
         @Subscribe
+        @AllowConcurrentEvents
         public void handleEvent(String event) {
-            System.out.println(Thread.currentThread().getName() + ":"
-                    + this.getClass().getSimpleName() + " " + event);
+            log("%s %s",this.getClass().getSimpleName(), event);
         }
     }
 
@@ -67,14 +80,19 @@ public class EventBusTest {
         }
     }
 
+    static void register(Object listener) {
+        eventBus.register(listener);
+        asyncEventBus.register(listener);
+    }
+
 
     static {
-        eventBus.register(new IntegerListener());
-        eventBus.register(new FloatListener());
-        eventBus.register(new StringListener());
-        eventBus.register(new ObjectListener());
-        eventBus.register(new MultiMethodListener());
-        eventBus.register(new ExceptionListener());
+        register(new IntegerListener());
+        register(new FloatListener());
+        register(new StringListener());
+        register(new ObjectListener());
+        register(new MultiMethodListener());
+        register(new ExceptionListener());
     }
 
     // 所有的事件触发都是在同一个线程内
@@ -102,5 +120,11 @@ public class EventBusTest {
     public void triggerExceptionEvent() {
         eventBus.post(new Exception("test"));
         // 发生异常之后不会被阻断
+    }
+
+    @Test
+    public void asyncEvent() {
+        asyncEventBus.post("hello");
+        log(" event posted");
     }
 }
