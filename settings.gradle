@@ -23,5 +23,9 @@ include ":client"
 project(":client").projectDir = new File(settingsDir, "./client")
 include ":biz"
 project(":biz").projectDir = new File(settingsDir, "./biz")
+include ":biz-zookeeper"
+project(":biz-zookeeper").projectDir = new File(settingsDir, "./biz-zookeeper")
 include ":java-demo-web"
 project(":java-demo-web").projectDir = new File(settingsDir, "./web")
+include ":nettosphere"
+project(":nettosphere").projectDir = new File(settingsDir, "./nettosphere")
