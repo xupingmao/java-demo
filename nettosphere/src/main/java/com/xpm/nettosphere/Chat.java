@@ -111,6 +111,7 @@ public class Chat {
         logger.info("receive Message: {}", message);
 
         String channel = buildChannelKey(res.getRequest());
+        // TODO 还需要记录离线消息
         if (sendJedis != null) {
             String userId = getUserId(res.getRequest());
             sendJedis.publish(channel, String.format("%s says %s", userId, message));
