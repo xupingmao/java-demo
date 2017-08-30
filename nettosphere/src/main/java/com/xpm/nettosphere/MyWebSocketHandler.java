@@ -63,7 +63,8 @@ public class MyWebSocketHandler implements WebSocketProtocol {
 
         // Accept the handshake by suspending the response.
         r = (AtmosphereResource) webSocket.resource();
-
+        // 保持连接
+        r.suspend(-1);
         r.write("Time " + new Date());
 //
 //        final Broadcaster b = lookupBroadcaster(((AtmosphereRequest) r.getRequest())
@@ -151,7 +152,7 @@ public class MyWebSocketHandler implements WebSocketProtocol {
     }
 
     public void onError(WebSocket webSocket, WebSocketProcessor.WebSocketException ex) {
-        System.out.println("Trouble");
+        logger.error("Trouble");
         logger.error(String.format(ex.getMessage() + " Status {%s} Message {%s}",
                 webSocket.resource().getResponse().getStatus(),
                 ex.response().getStatusMessage()), ex);
