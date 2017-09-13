@@ -6,20 +6,23 @@
  * user guide available at https://docs.gradle.org/3.4.1/userguide/tutorial_java_projects.html
  */
 
-
-
 subprojects {
     // Apply the java plugin to add support for Java
     apply plugin: 'java'
-// Apply the application plugin to add support for building an application
-//    apply plugin: 'application'
+    // Apply the application plugin to add support for building an application
+    //    apply plugin: 'application'
     apply plugin: 'maven'
 
-// In this section you declare where to find the dependencies of your project
+    // In this section you declare where to find the dependencies of your project
     repositories {
         // Use jcenter for resolving your dependencies.
         // You can declare any Maven/Ivy/file repository here.
         jcenter()
+        mavenLocal()
+        maven {
+            name = "extra"
+            url = project.ext.repositoryUrl
+        }
     }
 
     group = 'java-demo'
