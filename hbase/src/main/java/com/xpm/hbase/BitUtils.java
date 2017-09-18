@@ -3,13 +3,18 @@ import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 
 /**
+ * @see org.apache.hadoop.hbase.util.Bytes
  * Created by xupingmao on 2017/9/13.
  */
+@Deprecated
 public class BitUtils {
 
     private static Charset UTF8 = Charset.forName("UTF-8");
 
     public static String toString(byte[] bytes) {
+        if (bytes == null) {
+            return null;
+        }
         return new String(bytes, UTF8);
     }
 

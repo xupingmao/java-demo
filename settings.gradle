@@ -21,8 +21,13 @@ rootProject.name = 'java-demo'
 //project(":lang").projectDir = new File(settingsDir, "./lang")
 include ":client"
 project(":client").projectDir = new File(settingsDir, "./client")
+
+include ":java-demo-common"
+project(":java-demo-common").projectDir = new File(settingsDir, "./common")
+
 include ":biz"
 project(":biz").projectDir = new File(settingsDir, "./biz")
+
 include ":zookeeper"
 project(":zookeeper").projectDir = new File(settingsDir, "./zookeeper")
 include ":java-demo-web"
