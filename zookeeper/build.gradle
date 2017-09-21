@@ -1,5 +1,5 @@
 dependencies {
-    compile project(":biz")
+    compile project(":java-demo-biz")
 
     // https://mvnrepository.com/artifact/org.apache.zookeeper/zookeeper
     compile group: 'org.apache.zookeeper', name: 'zookeeper', version: '3.4.10', ext: 'pom'

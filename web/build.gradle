@@ -4,7 +4,7 @@ webAppDirName = "src/main/webapp"
 version=
 
 dependencies {
-    compile project(":biz")
+    compile project(":java-demo-biz")
     // This dependency is found on compile classpath of this component and consumers.
     compile 'com.google.guava:guava:20.0'
 

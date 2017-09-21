@@ -1,5 +1,5 @@
 dependencies {
-    compile project(":client")
+    compile project(":java-demo-client")
     // This dependency is found on compile classpath of this component and consumers.
 //    compile 'com.google.guava:guava:20.0'
     compile 'org.eclipse.persistence:eclipselink:2.6.3'

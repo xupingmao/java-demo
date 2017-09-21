@@ -6,6 +6,8 @@ import org.junit.Test;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,5 +44,15 @@ public class RTTITest {
 
         System.out.println(genericType.getClass());
         System.out.println(JSON.toJSONString(genericType, true));
+    }
+
+    @Test
+    public void getParameterTypeInfo() {
+        List<String> list = new ArrayList<>();
+        TypeVariable<? extends Class<? extends List>>[] typeParameters = list.getClass().getTypeParameters();
+        for (int i = 0; i < typeParameters.length; i++) {
+            // 只能拿到泛型的名字
+            System.out.println(typeParameters[i]);
+        }
     }
 }

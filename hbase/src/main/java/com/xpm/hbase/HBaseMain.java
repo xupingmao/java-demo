@@ -202,7 +202,7 @@ public class HBaseMain {
     }
 
     private static void doCount(Configuration configuration, Table table) throws IOException {
-        // TODO 目前不工作
+        // TODO 目前不工作，协处理器没有在hbase-site中注册
         // No registered coprocessor service found for name AggregateService in region test
         long rowCount = 0;
         // Increase RPC timeout, in case of a slow computation

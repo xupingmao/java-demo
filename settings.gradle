@@ -19,20 +19,23 @@ rootProject.name = 'java-demo'
 
 //include ":lang"
 //project(":lang").projectDir = new File(settingsDir, "./lang")
-include ":client"
-project(":client").projectDir = new File(settingsDir, "./client")
+include ":java-demo-client"
+project(":java-demo-client").projectDir = new File(settingsDir, "./client")
 
 include ":java-demo-common"
 project(":java-demo-common").projectDir = new File(settingsDir, "./common")
 
-include ":biz"
-project(":biz").projectDir = new File(settingsDir, "./biz")
+include ":java-demo-jdk"
 
-include ":zookeeper"
-project(":zookeeper").projectDir = new File(settingsDir, "./zookeeper")
+include ":java-demo-biz"
+project(":java-demo-biz").projectDir = new File(settingsDir, "./biz")
+
+include ":java-demo-zookeeper"
+project(":java-demo-zookeeper").projectDir = new File(settingsDir, "./zookeeper")
 include ":java-demo-web"
 project(":java-demo-web").projectDir = new File(settingsDir, "./web")
-include ":nettosphere"
-project(":nettosphere").projectDir = new File(settingsDir, "./nettosphere")
-include ":hbase"
-project(":hbase").projectDir = new File(settingsDir, "./hbase")
+include ":java-demo-nettosphere"
+project(":java-demo-nettosphere").projectDir = new File(settingsDir, "./nettosphere")
+include ":java-demo-hbase"
+project(":java-demo-hbase").projectDir = new File(settingsDir, "./hbase")
+

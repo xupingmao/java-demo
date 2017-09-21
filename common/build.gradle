@@ -1,6 +1,6 @@
 dependencies {
 
-    compile project(":client")
+    compile project(":java-demo-client")
     compile 'com.google.guava:guava:20.0'
     compile 'org.eclipse.persistence:eclipselink:2.6.3'
     compile 'mysql:mysql-connector-java:5.1.39'

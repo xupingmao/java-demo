@@ -3,4 +3,9 @@
         <name>hbase.rootdir</name>
         <value>/tmp/hbase</value>
     </property>
+
+    <property>
+        <name>hbase.coprocessor.region.classes</name>
+        <value></value>
+    </property>
 </configuration>
