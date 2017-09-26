@@ -24,8 +24,10 @@ public class HBaseMain {
     static final byte[] A = "a".getBytes();
     static final byte[] B = "b".getBytes();
 
+    private static Configuration conf;
+
     public static void main(String[] args) throws Exception {
-        Configuration conf = HBaseConfiguration.create();
+        conf = HBaseConfiguration.create();
         conf.addResource("META-INF/hbase-site.xml");
 
         Connection connection = ConnectionFactory.createConnection(conf);
@@ -105,6 +107,15 @@ public class HBaseMain {
             put.addColumn(CF, "b".getBytes(), RandomUtils.randomString(10).getBytes());
                 table.put(put);
         }
+        RecordService recordService = new RecordService(table);
+        Record byRowKey = recordService.findByRowKey("record-001");
+        System.out.println(byRowKey);
+
+        Record record = new Record();
+        record.setName("record-001");
+        record.setAge(12);
+        record.setAddress("Beijing");
+        recordService.merge(record);
     }
 
     private static void scanRand(Table table) throws IOException {

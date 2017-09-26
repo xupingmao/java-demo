@@ -13,9 +13,9 @@ public class PartitionQueryMain {
         String partitionPrefix = "dzj.mq_buffer_partition_";
         int partitionStart = 1;
         int partitionEnd = 10;
-        String bizKey = "2017092159C392B4E4B0D14812AF9778";
+        String bizKey = "2017092059C26A53E4B022BBB4C5F0C1";
 
-        DBTools tool = new DBTools();
+        DBUtils tool = new DBUtils("jdbc:mysql://192.168.0.173:3306/dzj");
 
         try {
             for (int i = partitionStart; i <= partitionEnd; i++) {

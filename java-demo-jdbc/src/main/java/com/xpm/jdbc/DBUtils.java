@@ -3,20 +3,28 @@ package com.xpm.jdbc;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by xupingmao on 2017/9/22.
  */
-public class DBTools {
+public class DBUtils {
 
     private java.sql.Connection connection;
     private java.sql.PreparedStatement preparedStatement;
 
-    private String URL = "jdbc:mysql://192.168.0.173:3306/dzj";
+    private static String URL = "jdbc:mysql://192.168.0.173:3306/dzj";
 
-    public DBTools() throws SQLException {
-        connection = DriverManager.getConnection(URL, "root", "123456");
+    public DBUtils() throws SQLException {
+        this(URL);
+    }
+
+    public DBUtils(String url) throws SQLException {
+        connection = DriverManager.getConnection(url, "root", "123456");
+        // 自动提交，单条SQL自动加事务，如果使用事务需要关闭autoCommit
+        connection.setAutoCommit(true);
     }
 
 
@@ -54,9 +62,18 @@ public class DBTools {
         return null;
     }
 
+    public static List<Object> getColumnList(ResultSet resultSet) throws SQLException {
+        List<Object> values = new ArrayList();
+        int columnCount = resultSet.getMetaData().getColumnCount();
+        for (int i = 0; i < columnCount; i++) {
+            Object object = resultSet.getObject(i+1);
+            values.add(object);
+        }
+        return values;
+    }
 
 
-    public void printResultSet(ResultSet resultSet) throws SQLException {
+    public static void printResultSet(ResultSet resultSet) throws SQLException {
         int columnCount = resultSet.getMetaData().getColumnCount();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < columnCount; i++) {
@@ -67,7 +84,7 @@ public class DBTools {
         System.out.println(sb.toString());
     }
 
-    public void printColumnDef(ResultSet rs) throws SQLException {
+    public static void printColumnDef(ResultSet rs) throws SQLException {
         int columnCount = rs.getMetaData().getColumnCount();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < columnCount; i++) {

@@ -6,6 +6,6 @@
 
     <property>
         <name>hbase.coprocessor.region.classes</name>
-        <value></value>
+        <value>org.apache.hadoop.hbase.protobuf.generated.AggregateProtos.AggregateService</value>
     </property>
 </configuration>

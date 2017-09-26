@@ -6,7 +6,6 @@ import java.nio.charset.Charset;
  * @see org.apache.hadoop.hbase.util.Bytes
  * Created by xupingmao on 2017/9/13.
  */
-@Deprecated
 public class BitUtils {
 
     private static Charset UTF8 = Charset.forName("UTF-8");
@@ -18,19 +17,31 @@ public class BitUtils {
         return new String(bytes, UTF8);
     }
 
-    public static long toLong(byte[] bytes) {
+    public static Long toLong(byte[] bytes) {
+        if (bytes == null) {
+            return null;
+        }
         return ByteBuffer.wrap(bytes).getLong();
     }
 
-    public static int toInt(byte[] bytes) {
+    public static Integer toInt(byte[] bytes) {
+        if (bytes == null) {
+            return null;
+        }
         return ByteBuffer.wrap(bytes).getInt();
     }
 
-    public static float toFloat(byte[] bytes) {
+    public static Float toFloat(byte[] bytes) {
+        if (bytes == null) {
+            return null;
+        }
         return ByteBuffer.wrap(bytes).getFloat();
     }
 
-    public static double toDouble(byte[] bytes) {
+    public static Double toDouble(byte[] bytes) {
+        if (bytes == null) {
+            return null;
+        }
         return ByteBuffer.wrap(bytes).getDouble();
     }
 
