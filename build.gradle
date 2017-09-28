@@ -17,8 +17,8 @@ subprojects {
     repositories {
         // Use jcenter for resolving your dependencies.
         // You can declare any Maven/Ivy/file repository here.
-        jcenter()
         mavenLocal()
+        jcenter()
         maven {
             name = "extra"
             url = project.ext.repositoryUrl

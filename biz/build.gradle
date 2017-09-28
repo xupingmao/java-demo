@@ -8,6 +8,9 @@ dependencies {
     compile "javax.servlet:javax.servlet-api:3.1.0"
     compile 'org.springframework:spring-context:4.3.1.RELEASE'
     compile "org.springframework:spring-web:4.3.1.RELEASE"
+
+
+
     compile 'org.slf4j:jcl-over-slf4j:1.7.5'
     // https://mvnrepository.com/artifact/com.caucho/hessian
     compile group: 'com.caucho', name: 'hessian', version: '4.0.38'
