@@ -8,7 +8,6 @@ import org.apache.hadoop.hbase.client.coprocessor.AggregationClient;
 import org.apache.hadoop.hbase.client.coprocessor.LongColumnInterpreter;
 import org.apache.hadoop.hbase.filter.*;
 import org.apache.hadoop.hbase.util.Bytes;
-import sun.tools.jconsole.Tab;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -112,8 +111,8 @@ public class HBaseMain {
         System.out.println(byRowKey);
 
         Record record = new Record();
-        record.setName("record-001");
-        record.setAge(12);
+        record.setName("record-" + RandomUtils.randomString(5));
+        record.setAge(RandomUtils.randomInt(0, 10));
         record.setAddress("Beijing");
         recordService.merge(record);
     }
@@ -213,7 +212,6 @@ public class HBaseMain {
     }
 
     private static void doCount(Configuration configuration, Table table) throws IOException {
-        // TODO 目前不工作，协处理器没有在hbase-site中注册
         // No registered coprocessor service found for name AggregateService in region test
         long rowCount = 0;
         // Increase RPC timeout, in case of a slow computation
@@ -230,6 +228,17 @@ public class HBaseMain {
         } catch (Throwable e) {
             throw new IOException(e);
         }
+
+        try {
+            Scan scan = new Scan();
+            // scan.setFilter(new QualifierFilter(CompareFilter.CompareOp.NOT_EQUAL, new BinaryComparator(RecordService.AGE)));
+            scan.addColumn(CF, RecordService.AGE);
+            Long sum = aggregationClient.sum(table, new LongColumnInterpreter(), scan);
+            System.out.println("age sum=" + sum);
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+
     }
 
 }

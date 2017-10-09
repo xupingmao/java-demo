@@ -13,11 +13,11 @@ import java.io.IOException;
 public class RecordService {
 
     private final Table table;
-    private final static byte[] CF = "cf".getBytes();
-    private final static byte[] NAME = "NAME".getBytes();
-    private final static byte[] AGE = "AGE".getBytes();
-    private final static byte[] VERSION = "VERSION".getBytes();
-    private final static byte[] ADDRESS = "ADDRESS".getBytes();
+    public final static byte[] CF = "cf".getBytes();
+    public final static byte[] NAME = "NAME".getBytes();
+    public final static byte[] AGE = "AGE".getBytes();
+    public final static byte[] VERSION = "VERSION".getBytes();
+    public final static byte[] ADDRESS = "ADDRESS".getBytes();
 
     public RecordService(Table table) {
         this.table = table;
