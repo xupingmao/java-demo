@@ -16,9 +16,9 @@ import java.util.StringTokenizer;
 /**
  * Created by xupingmao on 2017/9/29.
  */
-public class SelectorMain {
+public class NIOSelectorMain {
 
-    private static Logger LOG = LoggerFactory.getLogger(SelectorMain.class);
+    private static Logger LOG = LoggerFactory.getLogger(NIOSelectorMain.class);
 
     public static void main(String[] args) throws IOException {
         int port = 8082;

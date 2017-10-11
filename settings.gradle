@@ -26,8 +26,8 @@ include ":java-demo-common"
 project(":java-demo-common").projectDir = new File(settingsDir, "./common")
 
 include ":java-demo-jdk"
-
 include ":java-demo-jdbc"
+include ":java-demo-netty"
 
 include ":java-demo-biz"
 project(":java-demo-biz").projectDir = new File(settingsDir, "./biz")
