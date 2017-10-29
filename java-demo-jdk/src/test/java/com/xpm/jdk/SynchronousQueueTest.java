@@ -13,7 +13,7 @@ public class SynchronousQueueTest {
     static Logger logger = LoggerFactory.getLogger(SynchronousQueueTest.class);
 
     public static void main(String[] args) throws InterruptedException {
-        // 没有缓冲区，只能放一个对象进去
+        // 没有缓冲区，必须有消费者才能把产品放入队列
         SynchronousQueue<String> queue = new SynchronousQueue<>();
         new Thread() {
             @Override
@@ -31,8 +31,8 @@ public class SynchronousQueueTest {
             @Override
             public void run() {
                 try {
-                    String take = queue.take();
-                    logger.info("value={}", take);
+                    take(queue);
+                    take(queue);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -44,7 +44,14 @@ public class SynchronousQueueTest {
     }
 
     private static void put(SynchronousQueue<String> queue, String one) throws InterruptedException {
-        System.out.printf("Put %s:%s\n", Thread.currentThread().getName(), one);
-        queue.put(one);
+        String product = Thread.currentThread().getName() + "-" + one;
+        logger.info("Put {}", product);
+        queue.put(product);
+    }
+
+    private static String take(SynchronousQueue<String> queue) throws InterruptedException {
+        String value = queue.take();
+        logger.info("Take {}", value);
+        return value;
     }
 }

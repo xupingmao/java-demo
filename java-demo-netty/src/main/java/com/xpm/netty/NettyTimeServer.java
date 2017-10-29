@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import java.io.UnsupportedEncodingException;
 import java.net.SocketAddress;
 import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 
 /**
  * Created by xupingmao on 2017/10/11.
@@ -23,13 +24,12 @@ public class NettyTimeServer {
     private static Logger LOGGER = LoggerFactory.getLogger(NettyTimeServer.class);
 
     static class TimeServerHandler extends ChannelHandlerAdapter {
+        static Charset charset = Charset.forName("UTF-8");
 
         @Override
         public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
             ByteBuf buf = (ByteBuf) msg;
-            byte[] req = new byte[buf.readableBytes()];
-            buf.readBytes(req);
-            String body = new String(req, "UTF-8");
+            String body = buf.toString(charset);
             SocketAddress socketAddress = ctx.channel().remoteAddress();
             LOGGER.info("Remote: {}", socketAddress);
             LOGGER.info("Receive {}", body);

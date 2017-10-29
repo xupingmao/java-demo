@@ -62,15 +62,6 @@ public class NettyTimeServerWithDecoder {
 
     }
 
-    static class ChildChannelHandler extends ChannelInitializer<SocketChannel> {
-
-        @Override
-        protected void initChannel(SocketChannel ch) throws Exception {
-            ch.pipeline().addLast(new StringDecoder(Charset.forName("UTF-8")))
-                    .addLast(new TimeServerHandler());
-        }
-    }
-
     public void bind(int port) throws InterruptedException {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -80,7 +71,13 @@ public class NettyTimeServerWithDecoder {
             bootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG, 1024)
-                    .childHandler(new ChildChannelHandler());
+                    .childHandler(new ChannelInitializer<SocketChannel>() {
+                        @Override
+                        protected void initChannel(SocketChannel ch) throws Exception {
+                            ch.pipeline().addLast(new StringDecoder(Charset.forName("UTF-8")))
+                                    .addLast(new TimeServerHandler());
+                        }
+                    });
             LOGGER.info("server start at port {}", port);
             ChannelFuture future = bootstrap.bind(port).sync();
             // 等待服务端端口关闭
