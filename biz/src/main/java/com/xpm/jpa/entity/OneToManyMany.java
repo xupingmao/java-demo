@@ -38,10 +38,12 @@ public class OneToManyMany extends BaseDO{
         this.oneId = oneId;
     }
 
+    @Override
     public String getValue() {
         return value;
     }
 
+    @Override
     public void setValue(String value) {
         this.value = value;
     }

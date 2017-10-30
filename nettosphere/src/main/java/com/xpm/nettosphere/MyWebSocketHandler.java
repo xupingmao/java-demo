@@ -50,10 +50,12 @@ public class MyWebSocketHandler implements WebSocketProtocol {
 
     private Broadcaster broadcaster;
 
+    @Override
     public void configure(AtmosphereConfig config) {
         logger.info(String.format("configure(): {Config: %s}", config));
     }
 
+    @Override
     public void onOpen(WebSocket webSocket) {
 
         logger.info(String.format(
@@ -107,6 +109,7 @@ public class MyWebSocketHandler implements WebSocketProtocol {
 //        r.write("Hello,World");
     }
 
+    @Override
     public List<AtmosphereRequest> onMessage(WebSocket webSocket, String message) {
 
         logger.info(String.format(
@@ -127,6 +130,7 @@ public class MyWebSocketHandler implements WebSocketProtocol {
         return null;
     }
 
+    @Override
     public List<AtmosphereRequest> onMessage(WebSocket webSocket,
                                              byte[] message, int offset, int length) {
         logger.info(String.format(
@@ -144,6 +148,7 @@ public class MyWebSocketHandler implements WebSocketProtocol {
 //        return b;
     }
 
+    @Override
     public void onClose(WebSocket webSocket) {
 //        logger.info(String.format("onClose(): {IP: %s} : {Port: %s}",
 //                webSocket.resource().getRequest().getRemoteAddr(),
@@ -151,6 +156,7 @@ public class MyWebSocketHandler implements WebSocketProtocol {
         webSocket.resource().resume();
     }
 
+    @Override
     public void onError(WebSocket webSocket, WebSocketProcessor.WebSocketException ex) {
         logger.error("Trouble");
         logger.error(String.format(ex.getMessage() + " Status {%s} Message {%s}",

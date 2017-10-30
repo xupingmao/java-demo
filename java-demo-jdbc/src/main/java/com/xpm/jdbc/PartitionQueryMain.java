@@ -24,7 +24,7 @@ public class PartitionQueryMain {
                 System.out.println("==========================");
                 ResultSet rs = tool.executeQuery(sql, bizKey);
                 while (rs.next()) {
-                    tool.printResultSet(rs);
+                    DBUtils.printResultSet(rs);
                 }
 
             }

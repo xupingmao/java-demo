@@ -22,6 +22,7 @@ import org.atmosphere.cpr.Serializer;
 
 public class MyMessageSerializer implements Serializer {
 
+    @Override
     public void write(OutputStream os, Object o) throws IOException {
         if(o instanceof String){
             os.write(((String) o).getBytes());
