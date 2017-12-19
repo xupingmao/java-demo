@@ -3,9 +3,7 @@ package com.xpm.jdbc;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by xupingmao on 2017/9/22.
@@ -70,6 +68,17 @@ public class DBUtils {
             values.add(object);
         }
         return values;
+    }
+
+    public static Map<String, Object> getResultMap(ResultSet resultSet) throws SQLException {
+        int columnCount = resultSet.getMetaData().getColumnCount();
+        Map<String, Object> map = new HashMap<>();
+        for (int i = 0; i < columnCount; i++) {
+            String key = resultSet.getMetaData().getColumnLabel(i+1);
+            Object object = resultSet.getObject(i+1);
+            map.put(key, object);
+        }
+        return map;
     }
 
 

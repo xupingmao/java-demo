@@ -29,6 +29,7 @@ include ":java-demo-jdk"
 include ":java-demo-jdbc"
 include ":java-demo-netty"
 include ":java-demo-kafka"
+include ":java-demo-drools"
 
 include ":java-demo-biz"
 project(":java-demo-biz").projectDir = new File(settingsDir, "./biz")

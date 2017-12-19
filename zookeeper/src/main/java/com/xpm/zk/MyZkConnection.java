@@ -15,15 +15,15 @@ public class MyZkConnection {
         // Method to connect zookeeper ensemble.
         public MyZkClient connect(String host) throws IOException,InterruptedException {
 
-            zoo = new MyZkClient(host,5000,new Watcher() {
-
-                public void process(WatchedEvent we) {
-
-                    if (we.getState() == KeeperState.SyncConnected) {
-                        connectedSignal.countDown();
-                    }
-                }
-            });
+//            zoo = new MyZkClient(host,5000,new Watcher() {
+//
+//                public void process(WatchedEvent we) {
+//
+//                    if (we.getState() == KeeperState.SyncConnected) {
+//                        connectedSignal.countDown();
+//                    }
+//                }
+//            });
 
             connectedSignal.await();
             return zoo;
