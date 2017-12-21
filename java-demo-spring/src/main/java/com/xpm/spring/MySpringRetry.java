@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class MySpringRetry {
 
     private int count = 0;
+    private boolean recoverInvoked = false;
 
     @Retryable(maxAttempts = 5)
     public void call() {
@@ -21,12 +22,22 @@ public class MySpringRetry {
         System.out.println("Ok, finally done");
     }
 
+    @Retryable(maxAttempts = 1)
+    public void failMethod() {
+        throw new RuntimeException("always fail");
+    }
+
     @Recover
-    public void recover() {
-        System.out.println("do nothing");
+    public void recover(RuntimeException exception) {
+        recoverInvoked = true;
+        System.out.println("do recover");
     }
 
     public int getCount() {
         return count;
+    }
+
+    public boolean isRecoverInvoked() {
+        return recoverInvoked;
     }
 }

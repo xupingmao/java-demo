@@ -15,4 +15,11 @@ public class RetryTest extends BaseSpringTest {
         bean.call();
         Assert.assertTrue(bean.getCount() > 3);
     }
+
+    @Test
+    public void failAndRecover() {
+        MySpringRetry bean = context.getBean(MySpringRetry.class);
+        bean.failMethod();
+        Assert.assertTrue(bean.isRecoverInvoked());
+    }
 }
