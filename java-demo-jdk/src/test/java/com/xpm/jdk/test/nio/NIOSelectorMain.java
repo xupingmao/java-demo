@@ -1,4 +1,4 @@
-package com.xpm.jdk.nio;
+package com.xpm.jdk.test.nio;
 
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.StringTokenizer;
 
 /**
+ * NIO实现的简单的时间服务器
  * Created by xupingmao on 2017/9/29.
  */
 public class NIOSelectorMain {
@@ -64,7 +65,6 @@ public class NIOSelectorMain {
                     if (channel != null) {
                         // 注册Read操作，异常
                         // channel.register(selector, SelectionKey.OP_READ);
-
                         // HTTP协议头最多8K
                         ByteBuffer buffer = ByteBuffer.allocate(1024 * 8);
                         int read = channel.read(buffer);

@@ -1,4 +1,4 @@
-package com.xpm.jdk.nio;
+package com.xpm.jdk.test.nio;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
