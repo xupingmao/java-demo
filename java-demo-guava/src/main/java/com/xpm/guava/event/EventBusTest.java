@@ -1,16 +1,21 @@
-package eventbus;
+package com.xpm.guava.event;
 
 import com.google.common.eventbus.AllowConcurrentEvents;
 import com.google.common.eventbus.AsyncEventBus;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import com.google.common.util.concurrent.MoreExecutors;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.concurrent.Executors;
 
 /**
+ * eventBus 事件驱动测试
+ * eventBus提供同步和异步调用两种方式，支持并发
+ * 对于每一个事件，eventBus会按照注册的顺序触发，遇到异常eventBus会catch住并打印出日志，所以用户最好自己处理异常
+ * 如果一个事件没有对应的监听器，eventBus会创建一个DeadEvent把原事件包装一下发布出来
  * Created by xupingmao on 2017/7/10.
  */
 public class EventBusTest {
@@ -120,6 +125,7 @@ public class EventBusTest {
     public void triggerExceptionEvent() {
         eventBus.post(new Exception("test"));
         // 发生异常之后不会被阻断
+        Assert.assertTrue(true);
     }
 
     @Test

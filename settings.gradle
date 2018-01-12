@@ -17,8 +17,6 @@ include 'services:webservice'
 
 rootProject.name = 'java-demo'
 
-//include ":lang"
-//project(":lang").projectDir = new File(settingsDir, "./lang")
 include ":java-demo-client"
 include ":java-demo-common"
 include ":java-demo-biz"
@@ -33,4 +31,4 @@ include ":java-demo-redis"
 include ":java-demo-zookeeper"
 include ":java-demo-nettosphere"
 include ":java-demo-hbase"
-
+include ":java-demo-guava"

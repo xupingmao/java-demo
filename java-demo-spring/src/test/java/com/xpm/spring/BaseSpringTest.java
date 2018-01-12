@@ -1,10 +1,7 @@
 package com.xpm.spring;
 
 import org.junit.BeforeClass;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.*;
 import org.springframework.retry.annotation.EnableRetry;
 
 /**
@@ -15,6 +12,7 @@ import org.springframework.retry.annotation.EnableRetry;
 @Configuration
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @EnableRetry(proxyTargetClass = true)
+@ImportResource(locations = "classpath:META-INF/spring-context.xml")
 public class BaseSpringTest {
 
     static AnnotationConfigApplicationContext context;
@@ -22,6 +20,16 @@ public class BaseSpringTest {
     @Bean
     public MySpringRetry getMySpringRetry() {
         return new MySpringRetry();
+    }
+
+    @Bean
+    public AopBean getAopBean() {
+        return new AopBean();
+    }
+
+    @Bean
+    public AopAdvice getAopAdvice() {
+        return new AopAdvice();
     }
 
     @BeforeClass
