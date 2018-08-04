@@ -1,0 +1,9 @@
+<configuration>
+
+    <!-- 注册协处理器,这个只需要放在服务端
+    <property>
+        <name>hbase.coprocessor.user.region.classes</name>
+        <value>org.apache.hadoop.hbase.coprocessor.AggregateImplementation</value>
+    </property>
+    -->
+</configuration>

@@ -1,0 +1,19 @@
+dependencies {
+
+    compile project(":java-demo-client")
+    compile 'com.google.guava:guava:20.0'
+    compile 'org.eclipse.persistence:eclipselink:2.6.3'
+    compile 'mysql:mysql-connector-java:5.1.39'
+    compile 'joda-time:joda-time:2.5'
+    compile 'com.alibaba:fastjson:1.2.16'
+    compile 'org.springframework:spring-context:4.3.1.RELEASE'
+
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.9.1'
+    // log4j的桥接器，把log4j绑定到slf4j的API
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.9.1'
+    compile "junit:junit:4.12"
+
+    testCompile 'junit:junit:4.12'
+}
+

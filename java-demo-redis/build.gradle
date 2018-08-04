@@ -1,0 +1,12 @@
+
+dependencies {
+    compile project(":java-demo-common")
+    compile group: 'redis.clients', name: 'jedis', version: '2.9.0'
+}
+
+
+task init << {
+    description '初始化工程目录'
+    sourceSets*.java.srcDirs*.each { it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}

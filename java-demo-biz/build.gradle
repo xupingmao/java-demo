@@ -1,0 +1,27 @@
+dependencies {
+    compile project(":java-demo-client")
+    compile project(":java-demo-common")
+    compile 'com.google.guava:guava:20.0'
+    compile 'org.eclipse.persistence:eclipselink:2.6.3'
+    compile 'mysql:mysql-connector-java:5.1.39'
+    compile 'joda-time:joda-time:2.5'
+    compile 'com.alibaba:fastjson:1.2.16'
+    compile "javax.servlet:javax.servlet-api:3.1.0"
+    compile 'org.springframework:spring-context:4.3.1.RELEASE'
+    compile "org.springframework:spring-web:4.3.1.RELEASE"
+
+    compile 'org.slf4j:jcl-over-slf4j:1.7.5'
+    // https://mvnrepository.com/artifact/com.caucho/hessian
+    compile group: 'com.caucho', name: 'hessian', version: '4.0.38'
+//
+//    compile (group: 'com.alibaba', name: 'dubbo', version: '2.8.4.1') {
+//        exclude module:'org.springframework'
+//        exclude module:'log4j'
+//        exclude module:'slf4j-log4j12'
+//        exclude module:"hessian-lite"
+//    }
+//    compile 'com.alibaba:hessian-lite:3.2.1-fixed-3'
+
+    // Use JUnit test framework
+    testCompile 'junit:junit:4.12'
+}

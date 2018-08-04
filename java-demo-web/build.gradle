@@ -1,0 +1,12 @@
+apply plugin: 'war'
+webAppDirName = "src/main/webapp"
+version=
+
+dependencies {
+    compile project(":java-demo-biz")
+    // This dependency is found on compile classpath of this component and consumers.
+    compile 'com.google.guava:guava:20.0'
+
+    // Use JUnit test framework
+    testCompile 'junit:junit:4.12'
+}

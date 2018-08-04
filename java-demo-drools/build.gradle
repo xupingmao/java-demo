@@ -1,0 +1,4 @@
+dependencies {
+    // https://mvnrepository.com/artifact/org.drools/drools-core
+    compile group: 'org.drools', name: 'drools-core', version: '7.4.1.Final'
+}

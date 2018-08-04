@@ -1,0 +1,34 @@
+dependencies {
+    compile project(":java-demo-client")
+    // This dependency is found on compile classpath of this component and consumers.
+//    compile 'com.google.guava:guava:20.0'
+    compile 'org.eclipse.persistence:eclipselink:2.6.3'
+    compile 'mysql:mysql-connector-java:5.1.39'
+    compile 'joda-time:joda-time:2.5'
+    compile 'com.alibaba:fastjson:1.2.16'
+    compile "javax.servlet:javax.servlet-api:3.1.0"
+    compile 'org.springframework:spring-context:4.3.1.RELEASE'
+    compile "org.springframework:spring-web:4.3.1.RELEASE"
+    compile 'org.slf4j:jcl-over-slf4j:1.7.5'
+    // nettosphere 3.x版本例子太少
+    compile 'org.atmosphere:nettosphere:2.4.10'
+    compile 'org.slf4j:slf4j-log4j12:1.6.4'
+    compile group: 'redis.clients', name: 'jedis', version: '2.9.0'
+
+
+    // https://mvnrepository.com/artifact/org.igniterealtime.smack/smack-core
+    compile group: 'org.igniterealtime.smack', name: 'smack-core', version: '4.2.1'
+
+    // https://mvnrepository.com/artifact/jivesoftware/smack
+    compile group: 'jivesoftware', name: 'smack', version: '3.1.0'
+
+    // 包含XMPPTCPConnection
+    // https://mvnrepository.com/artifact/org.igniterealtime.smack/smack-tcp
+    compile group: 'org.igniterealtime.smack', name: 'smack-tcp', version: '4.2.1'
+
+    // https://mvnrepository.com/artifact/org.igniterealtime.smack/smack-im
+    compile group: 'org.igniterealtime.smack', name: 'smack-im', version: '4.2.1'
+
+    // Use JUnit test framework
+    testCompile 'junit:junit:4.12'
+}

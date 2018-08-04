@@ -1,0 +1,6 @@
+dependencies {
+    compile project(":java-demo-client")
+    compile project(":java-demo-common")
+
+    compile "org.apache.httpcomponents:httpcore:4.4.9"
+}
