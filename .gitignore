@@ -1,3 +1,15 @@
 *.class
 *.jar
+<<<<<<< HEAD
 **/build/**
+=======
+*.zip
+/gradle/wrapper/
+/build
+**/build/
+/.gradle
+/.idea
+.project
+.classpath
+**/.settings/
+>>>>>>> baa44700b6d6b342f2362d0baa5ff286f59c8d40
